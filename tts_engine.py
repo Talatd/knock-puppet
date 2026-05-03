@@ -42,7 +42,7 @@ def generate_speech(text, filename="response.mp3"):
         data = response.json()
         audio_content = base64.b64decode(data["audioContent"])
 
-        file_path = os.path.join("static", "audio", filename)
+        file_path = os.path.join("/tmp", filename)
         with open(file_path, "wb") as out:
             out.write(audio_content)
             

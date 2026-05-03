@@ -13,6 +13,10 @@ current_puppet_mood = "weary"
 def index():
     return render_template("index.html")
 
+@app.route("/tmp/<path:filename>")
+def serve_tmp(filename):
+    return send_from_directory("/tmp", filename)
+
 @app.route("/chat", methods=["POST"])
 def chat():
     global conversation_history, current_puppet_mood
@@ -30,7 +34,7 @@ def chat():
     if current_puppet_mood != prev_mood:
         image_path = generate_puppet_image(current_puppet_mood)
         if image_path:
-            image_path = image_path.replace("static/", "")
+            image_path = image_path.replace("/tmp/", "")
     
     audio_file = f"speech_{int(time.time())}.mp3"
     audio_path = generate_speech(puppet_response, audio_file)
@@ -50,7 +54,7 @@ def reset():
     
     image_path = generate_puppet_image("weary")
     if image_path:
-        image_path = image_path.replace("static/", "")
+        image_path = image_path.replace("/tmp/", "")
         
     return jsonify({"status": "reset", "image": image_path})
 

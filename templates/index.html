@@ -397,12 +397,12 @@
 
                 if (data.image) {
                     let img = document.getElementById('puppet-img');
-                    img.src = '/static/' + data.image + '?t=' + Date.now();
+                    img.src = '/tmp/' + data.image + '?t=' + Date.now();
                 }
 
                 if (data.audio) {
                     let audio = document.getElementById('puppet-audio');
-                    audio.src = '/static/audio/' + data.audio;
+                    audio.src = '/tmp/' + data.audio;
                     audio.play();
                 }
             } catch (err) {
@@ -431,7 +431,7 @@
                 document.getElementById('current-mood').textContent = 'weary';
                 if (data.image) {
                     let img = document.getElementById('puppet-img');
-                    img.src = '/static/' + data.image + '?t=' + Date.now();
+                    img.src = '/tmp/' + data.image + '?t=' + Date.now();
                 }
             } catch (e) {
                 console.error("Reset failed", e);

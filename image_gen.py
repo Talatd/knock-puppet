@@ -17,7 +17,7 @@ MOOD_VISUALS = {
     "regretful":     "kneeling in thick mud, rain pouring down, somber grey tones, head in hands"
 }
 
-def generate_puppet_image(mood: str, output_dir: str = "static/generated") -> str:
+def generate_puppet_image(mood: str, output_dir: str = "/tmp") -> str:
     Path(output_dir).mkdir(parents=True, exist_ok=True)
     
     mood_desc = MOOD_VISUALS.get(mood, MOOD_VISUALS["weary"])
